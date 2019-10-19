@@ -163,7 +163,7 @@ class DefaultListenerMixin:
                  formatter=ApacheFormatter(with_response_time=False),
                  ip_header=None):
         """Init for the default Listener object. The default behavior is to log info messages
-        to the :attr:`logger` or if not provided create a new one called `wsgiinspector`.
+        to the :attr:`logger` or if not provided create a new one called `wsgilistener`.
 
         If no log handlers are provided a default Stream handler is created (messages go to std.err).
 
@@ -176,7 +176,7 @@ class DefaultListenerMixin:
             formatter: The formatting callable
             ip_header: Optional additional kwarg for the formatter.
         """
-        logger = logger or logging.getLogger('wsgiinspector')
+        logger = logger or logging.getLogger('wsgilistener')
         handlers = handlers or [logging.StreamHandler()]
         for handler in handlers:
             logger.addHandler(handler)

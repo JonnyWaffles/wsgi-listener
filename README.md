@@ -14,7 +14,7 @@ The request and response body content is part of the interface.
 
 Original project's Homepage: https://github.com/pklaus/wsgi-request-logger
 
-Easily loggers, emailers, event systems, etc, with the `request_listeners` and `response_listener` hooks.
+Easily add loggers, emailers, event systems, etc, with the `request_listeners` and `response_listener` hooks.
 
 #### Installation
 todo: Ship to pypi
@@ -23,8 +23,7 @@ Simply install this Python module via
     pip install wsgi-listener
 
 #### Usage
-
-To add this middleware to your WSGI `application` with the default Response logging behavior.
+To add this middleware to your WSGI `application` with the default response logger named `wsgilistener` in Apache format.
 ```python
 from wsgi_listener import WSGIListenerMiddleware
 
