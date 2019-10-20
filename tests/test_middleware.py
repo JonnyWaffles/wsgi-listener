@@ -42,7 +42,7 @@ def test_middleware_passthrough(environ_factory):
     environ = environ_factory()
     wrapped_app = WSGIListenerMiddleware(app)
     rv = wrapped_app(environ, start_response)
-    assert next(rv) == 'Hello World!\n'
+    assert next(rv) == b'Hello World!\n'
 
 
 def test_middleware_default_response_listener(caplog, environ_factory):
