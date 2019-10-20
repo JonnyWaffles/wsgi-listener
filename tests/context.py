@@ -6,4 +6,4 @@ PROJECT_ROOT = PACKAGE_ROOT.parent
 
 sys.path.insert(0, str(PROJECT_ROOT.absolute()))
 
-from wsgi_listener import WSGIListenerMiddleware, DefaultRequestListener, DefaultResponseListener
+from wsgi_listener import WSGIListenerMiddleware, DefaultRequestListener, DefaultResponseListener, DEFAULT_LISTENER_LOG_NAME

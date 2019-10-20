@@ -37,6 +37,9 @@ except AttributeError:
     clock = time.time
 
 
+DEFAULT_LISTENER_LOG_NAME = 'wsgilistener'
+
+
 class AbstractBaseRequestListener(ABC):
     @abstractmethod
     def handle(self, environ: dict, request_body: bytes, **kwargs) -> None:
@@ -178,7 +181,7 @@ class DefaultListenerMixin:
             formatter: The formatting callable
             ip_header: Optional additional kwarg for the formatter.
         """
-        logger = logger or logging.getLogger('wsgilistener')
+        logger = logger or logging.getLogger(DEFAULT_LISTENER_LOG_NAME)
         handlers = handlers or [logging.StreamHandler()]
         for handler in handlers:
             logger.addHandler(handler)
