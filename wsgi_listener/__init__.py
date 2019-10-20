@@ -98,7 +98,7 @@ class WSGIListenerMiddleware(object):
         except ValueError:
             request_body_size = 0
         request_body = environ['wsgi.input'].read(request_body_size)
-        self._handle_request(request_body)
+        self._handle_request(environ, request_body)
 
         status_code = None
         content_length = None
@@ -123,7 +123,7 @@ class WSGIListenerMiddleware(object):
 
     def _handle_request(self, environ: dict, request_body: bytes, **kwargs):
         """Calls handle on all of the :attr:`self.request_listeners` passing the WSGI request data."""
-        for handler in self.response_listeners:
+        for handler in self.request_listeners:
             handler.handle(environ=environ, request_body=request_body, **kwargs)
 
     def _handle_response(self, status_code: int, environ: dict, content_length: int, response_body: bytes,
