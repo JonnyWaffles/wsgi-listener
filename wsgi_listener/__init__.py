@@ -126,7 +126,7 @@ class WSGIListenerMiddleware(object):
         content_length = content_length if content_length is not None else len(response_body)
         # noinspection PyTypeChecker
         self._handle_response(status_code, environ, content_length, response_body, processing_time)
-        return BytesIO(response_body)  # rest response body for the wsgi interface
+        return BytesIO(response_body)  # reset response body for the wsgi interface
 
     def _handle_request(self, environ: dict, request_body: bytes, **kwargs):
         """Calls handle on all of the :attr:`self.request_listeners` passing the WSGI request data."""
