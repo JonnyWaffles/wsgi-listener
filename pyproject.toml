@@ -7,7 +7,7 @@ module = "wsgi_listener"
 author = "Jonny Fuller"
 author-email = "mr.waffles@gmail.com"
 home-page = "https://github.com/JonnyWaffles/wsgi-listener"
-description-fie = "README.md"
+description-file = "README.md"
 requires-python=">=3.5"
 classifiers = [
     "Intended Audience :: Developers",
