@@ -12,6 +12,7 @@ behavior logs the response similarly to the original project. However, now
 additional listeners can be added to both the request and response cycle.
 The request and response body content is part of the interface.
 
+Project Homepage: https://github.com/JonnyWaffles/wsgi-listener
 Original project's Homepage: https://github.com/pklaus/wsgi-request-logger
 
 Easily add loggers, emailers, event systems, etc, with the `request_listeners` and `response_listener` hooks.

@@ -31,6 +31,8 @@ from .timehacks import Local
 
 __all__ = ['WSGIListenerMiddleware', 'AbstractBaseRequestListener', 'AbstractBaseResponseListener']
 
+__version__ = '0.1'
+
 try:
     clock = time.perf_counter
 except AttributeError:
