@@ -5,11 +5,11 @@ from .context import WSGIListenerMiddleware, DefaultResponseListener, DefaultReq
 
 def app(environ, start_fn):
     start_fn('200 OK', [('Content-Type', 'text/plain')])
-    yield "Hello World!\n"
+    yield b"Hello World!\n"
 
 
-def start_response(status_code, headers):
-    return status_code, headers
+def start_response(status_code, headers, exc_info=None):
+    return status_code, headers, exc_info
 
 
 def test_middleware():
@@ -17,5 +17,5 @@ def test_middleware():
     setup_testing_defaults(environ)
     wrapped_app = WSGIListenerMiddleware(app)
     rv = wrapped_app(environ, start_response)
-    assert next(rv) == "Hello World!\n"
+    assert next(rv) == b"Hello World!\n"
 

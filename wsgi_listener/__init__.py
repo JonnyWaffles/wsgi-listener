@@ -23,6 +23,7 @@ License: BSD (see LICENSE for details)
 import logging
 import time
 from abc import ABC, abstractmethod
+from io import BytesIO
 
 from wsgi_listener.formatters import ApacheFormatter
 from .formatters import ApacheFormatter
@@ -98,6 +99,7 @@ class WSGIListenerMiddleware(object):
         except ValueError:
             request_body_size = 0
         request_body = environ['wsgi.input'].read(request_body_size)
+        environ['wsgi.input'] = BytesIO(request_body)  # reset request body for the nested app
         self._handle_request(environ, request_body)
 
         status_code = None
@@ -119,7 +121,7 @@ class WSGIListenerMiddleware(object):
         content_length = content_length if content_length is not None else len(response_body)
         # noinspection PyTypeChecker
         self._handle_response(status_code, environ, content_length, response_body, processing_time)
-        return rv
+        return BytesIO(response_body)  # rest response body for the wsgi interface
 
     def _handle_request(self, environ: dict, request_body: bytes, **kwargs):
         """Calls handle on all of the :attr:`self.request_listeners` passing the WSGI request data."""
